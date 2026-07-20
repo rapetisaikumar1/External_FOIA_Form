@@ -1,0 +1,644 @@
+/* Form sections + reusable form-control styles. */
+
+/* ---------- Section card ---------- */
+.section {
+  background: var(--mr-surface);
+  border: 1px solid var(--mr-border);
+  border-radius: var(--mr-radius);
+  box-shadow: var(--mr-shadow-sm);
+  overflow: hidden;
+}
+
+.section__header {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  padding: 18px 22px;
+  border-bottom: 1px solid var(--mr-border);
+  background: var(--mr-surface-alt);
+}
+
+.section__index {
+  flex-shrink: 0;
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+  background: var(--mr-navy);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.section__heading {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.section__title {
+  font-size: 16.5px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.section__desc {
+  font-size: 13px;
+  color: var(--mr-text-muted);
+}
+
+.section__body {
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+/* ---------- Grid ---------- */
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px 18px;
+  /* Bottom-align controls so inputs line up even when a label wraps to two
+     lines (e.g. a long "(optional)" label next to a short one). */
+  align-items: end;
+}
+
+.grid--2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.grid--3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.span-full {
+  grid-column: 1 / -1;
+}
+
+@media (max-width: 680px) {
+  .grid--2,
+  .grid--3 {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---------- Field wrapper ---------- */
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+}
+
+.field__label {
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--mr-text);
+}
+
+.field__req {
+  color: var(--mr-red-strong);
+  margin-left: 3px;
+}
+
+.field__optional {
+  margin-left: 6px;
+  font-weight: 500;
+  font-size: 12px;
+  color: var(--mr-text-subtle);
+}
+
+.field__hint {
+  font-size: 12.5px;
+  color: var(--mr-text-subtle);
+}
+
+.field__error {
+  font-size: 12.5px;
+  font-weight: 500;
+  color: var(--mr-error);
+}
+
+/* ---------- Inputs ---------- */
+.input,
+.textarea,
+.select {
+  width: 100%;
+  font: inherit;
+  font-size: 14.5px;
+  color: var(--mr-text);
+  background: var(--mr-surface);
+  border: 1px solid var(--mr-border-strong);
+  border-radius: var(--mr-radius-sm);
+  padding: 10px 12px;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.input::placeholder,
+.textarea::placeholder {
+  color: var(--mr-text-subtle);
+}
+
+.input:hover,
+.textarea:hover,
+.select:hover {
+  border-color: #b9b9c0;
+}
+
+.input:focus,
+.textarea:focus,
+.select:focus {
+  outline: none;
+  border-color: var(--mr-info);
+  box-shadow: 0 0 0 3px var(--mr-ring);
+}
+
+.input--error,
+.textarea--error,
+.select--error {
+  border-color: var(--mr-error);
+}
+
+.textarea {
+  resize: vertical;
+  min-height: 150px;
+  line-height: 1.55;
+}
+
+.select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2355555f' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  padding-right: 38px;
+  cursor: pointer;
+}
+
+/* ---------- Choice groups (radio / checkbox) ---------- */
+.fieldset {
+  border: 0;
+  margin: 0;
+  padding: 0;
+  min-width: 0;
+}
+
+.legend {
+  padding: 0;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--mr-text);
+  margin-bottom: 8px;
+}
+
+.hint-below {
+  margin-top: 9px;
+  display: block;
+}
+
+.choice-group {
+  display: grid;
+  gap: 10px;
+}
+
+.choice-group--2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.choice-group--3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+@media (max-width: 680px) {
+  .choice-group--2,
+  .choice-group--3 {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Card-style selectable option */
+.choice {
+  display: flex;
+  gap: 11px;
+  align-items: flex-start;
+  padding: 13px 14px;
+  border: 1px solid var(--mr-border-strong);
+  border-radius: var(--mr-radius-sm);
+  background: var(--mr-surface);
+  cursor: pointer;
+  transition: border-color 0.15s ease, background 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.choice:hover {
+  border-color: #b9b9c0;
+  background: var(--mr-surface-muted);
+}
+
+.choice:focus-within {
+  border-color: var(--mr-info);
+  box-shadow: 0 0 0 3px var(--mr-ring);
+}
+
+.choice__input {
+  margin: 1px 0 0;
+  width: 17px;
+  height: 17px;
+  accent-color: var(--mr-red);
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+.choice__text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.choice__label {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--mr-text);
+}
+
+.choice__desc {
+  font-size: 12.5px;
+  color: var(--mr-text-muted);
+}
+
+/* Selected state (checked) */
+.choice:has(.choice__input:checked) {
+  border-color: var(--mr-red);
+  background: var(--mr-red-tint);
+}
+
+/* ---------- Declaration checkbox row ---------- */
+.declaration {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  padding: 15px 16px;
+  border: 1px solid var(--mr-border-strong);
+  border-radius: var(--mr-radius-sm);
+  background: var(--mr-surface);
+}
+
+.declaration__input {
+  width: 19px;
+  height: 19px;
+  accent-color: var(--mr-red);
+  margin-top: 1px;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+.declaration__text {
+  font-size: 13.5px;
+  color: var(--mr-text);
+  line-height: 1.55;
+}
+
+/* ---------- Multi-step: page heading ---------- */
+.pagehead {
+  padding: 28px 0 4px;
+}
+
+.pagehead__title {
+  font-size: clamp(20px, 3vw, 26px);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.pagehead__subtitle {
+  margin-top: 7px;
+  color: var(--mr-text-muted);
+  font-size: 14.5px;
+  max-width: 60ch;
+}
+
+/* ---------- Multi-step: page nav (Back / Proceed / Pay Now) ---------- */
+.page-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  padding-top: 6px;
+}
+
+.page-nav--end {
+  justify-content: flex-end;
+}
+
+.page-nav--center {
+  justify-content: center;
+}
+
+@media (max-width: 640px) {
+  .page-nav {
+    flex-direction: column-reverse;
+  }
+  .page-nav .btn {
+    width: 100%;
+  }
+}
+
+/* ---------- Preview: read-only review layout ---------- */
+.review {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px 24px;
+}
+
+/* Match the 680px breakpoint used by the form grids so the Preview and the form
+   collapse to one column together (no in-between 1-col/2-col band). */
+@media (max-width: 680px) {
+  .review {
+    grid-template-columns: 1fr;
+  }
+}
+
+.review__row {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 0;
+}
+
+.review__row--full {
+  grid-column: 1 / -1;
+}
+
+.review__label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--mr-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.review__value {
+  font-size: 14.5px;
+  color: var(--mr-text);
+  word-break: break-word;
+  white-space: pre-wrap;
+}
+
+.review__value--empty {
+  color: var(--mr-text-subtle);
+}
+
+/* ---------- Payment summary card ---------- */
+.paycard {
+  border: 1px solid var(--mr-border);
+  border-radius: var(--mr-radius);
+  background: var(--mr-surface);
+  box-shadow: var(--mr-shadow);
+  overflow: hidden;
+}
+
+.paycard__row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 16px;
+  padding: 14px 20px;
+}
+
+.paycard__row + .paycard__row {
+  border-top: 1px solid var(--mr-border);
+}
+
+.paycard__label {
+  color: var(--mr-text-muted);
+  font-size: 14.5px;
+}
+
+.paycard__amount {
+  font-weight: 600;
+  font-size: 14.5px;
+  color: var(--mr-text);
+  font-variant-numeric: tabular-nums;
+}
+
+.paycard__row--total {
+  background: var(--mr-surface-alt);
+}
+
+.paycard__row--total .paycard__label {
+  color: var(--mr-text);
+  font-weight: 700;
+  font-size: 15.5px;
+}
+
+.paycard__row--total .paycard__amount {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+/* ---------- Payment step: centered focused panel ---------- */
+.pay-panel {
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.pay-note {
+  font-size: 13px;
+  color: var(--mr-text-subtle);
+  margin-top: -4px;
+}
+
+.pay-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 4px;
+}
+
+.pay-actions .btn {
+  width: 100%;
+}
+
+/* ---------- Verifying payment (after returning from Stripe) ---------- */
+.verifying {
+  text-align: center;
+  padding: 52px 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+
+.page-spinner {
+  width: 42px;
+  height: 42px;
+  border: 3px solid var(--mr-border);
+  border-top-color: var(--mr-red);
+  border-radius: 50%;
+  animation: mr-spin 0.8s linear infinite;
+}
+
+.verifying__title {
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--mr-text);
+}
+
+.verifying__hint {
+  font-size: 13.5px;
+  color: var(--mr-text-subtle);
+}
+
+/* ---------- Submission states ---------- */
+.form-error {
+  display: flex;
+  gap: 10px;
+  padding: 12px 15px;
+  border: 1px solid var(--mr-border);
+  border-left: 3px solid var(--mr-error);
+  border-radius: var(--mr-radius-sm);
+  background: rgba(231, 0, 11, 0.04);
+  color: var(--mr-error);
+  font-size: 13.5px;
+  font-weight: 500;
+}
+
+.btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.btn__spinner {
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  margin-right: 8px;
+  vertical-align: -2px;
+  border: 2px solid rgba(255, 255, 255, 0.45);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: mr-spin 0.7s linear infinite;
+}
+
+@keyframes mr-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ---------- Success page ---------- */
+.success {
+  text-align: center;
+  padding: 20px 8px 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+
+.success__icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: rgba(0, 169, 110, 0.12);
+  color: var(--mr-success);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.success__message {
+  font-size: 15px;
+  color: var(--mr-text-muted);
+  max-width: 46ch;
+}
+
+.success__tracking {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 16px 28px;
+  border: 1px dashed var(--mr-border-strong);
+  border-radius: var(--mr-radius);
+  background: var(--mr-surface-alt);
+}
+
+.success__tracking-label {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--mr-text-subtle);
+}
+
+.success__tracking-number {
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: var(--mr-text);
+  font-variant-numeric: tabular-nums;
+}
+
+.success__hint {
+  font-size: 13px;
+  color: var(--mr-text-subtle);
+  max-width: 46ch;
+}
+
+/* Keep mobile form controls >=16px so iOS Safari does not zoom in on focus.
+   Placed at the END of form.css so it wins the equal-specificity source-order
+   tie against the base `.input/.textarea/.select { font-size: 14.5px }` rule
+   earlier in this same file. Desktop (>640px) stays 14.5px. */
+@media (max-width: 640px) {
+  .input,
+  .textarea,
+  .select {
+    font-size: 16px;
+  }
+}
+
+/* ── Identity verification (Step 5 — DiDit) ──────────────────────────────── */
+.idv { display: flex; flex-direction: column; gap: 12px; }
+.idv__panel {
+  border: 1px solid var(--mr-border);
+  border-radius: var(--mr-radius-md);
+  background: var(--mr-surface-alt);
+  padding: 18px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.idv__lead, .idv__hint { color: var(--mr-text-muted); font-size: 14px; line-height: 1.55; margin: 0; }
+.idv__status { color: var(--mr-text); font-weight: 600; font-size: 15px; margin: 0; }
+.idv__error { color: var(--mr-error); font-size: 13px; margin: 0; }
+.idv__panel--progress { flex-direction: row; align-items: flex-start; gap: 14px; }
+.idv__panel--review { border-color: var(--mr-warning); background: rgba(255, 136, 14, 0.06); }
+.idv__panel--ok { border-color: var(--mr-success); background: rgba(0, 169, 110, 0.07); }
+.idv__panel--fail { border-color: var(--mr-error); background: var(--mr-red-tint); }
+.idv__ok-title { color: var(--mr-success); font-weight: 700; font-size: 16px; margin: 0; }
+.idv__fail-title { color: var(--mr-error); font-weight: 700; font-size: 15px; margin: 0; }
+.idv__link {
+  background: none; border: none; padding: 0; margin: 0;
+  color: var(--mr-info); font-size: 13px; cursor: pointer; text-decoration: underline;
+  align-self: flex-start;
+}
+.idv__details { display: grid; grid-template-columns: 1fr; gap: 8px; margin: 4px 0 0; }
+.idv__details > div { display: flex; justify-content: space-between; gap: 16px; font-size: 14px; border-top: 1px solid var(--mr-border); padding-top: 8px; }
+.idv__details dt { color: var(--mr-text-muted); margin: 0; }
+.idv__details dd { color: var(--mr-text); font-weight: 600; margin: 0; text-align: right; }
+.idv__spinner {
+  width: 20px; height: 20px; flex-shrink: 0; margin-top: 2px;
+  border: 2px solid var(--mr-border-strong);
+  border-top-color: var(--mr-info);
+  border-radius: 50%;
+  animation: idv-spin 0.8s linear infinite;
+}
+@keyframes idv-spin { to { transform: rotate(360deg); } }
+.page-nav__hint { color: var(--mr-text-muted); font-size: 13px; margin: 0 0 4px; }
+.btn:disabled { opacity: 0.5; cursor: not-allowed; }

@@ -1,0 +1,55 @@
+/**
+ * MapleRecord design tokens.
+ * Values mirror the MapleRecord app branding so this standalone form looks
+ * native, while staying fully self-contained (no imports from the parent app).
+ */
+:root {
+  /* Brand */
+  --mr-navy: #030213;
+  --mr-red: #d00202;
+  --mr-red-2: #ff0000;
+  --mr-red-strong: #e7000b;
+
+  /* Surfaces */
+  --mr-bg: #f3f3f6;
+  --mr-surface: #ffffff;
+  --mr-surface-alt: #fafafa;
+  --mr-surface-muted: #f6f6f8;
+
+  /* Text */
+  --mr-text: #0a0a0a;
+  --mr-text-muted: #55555f;
+  --mr-text-subtle: #6b6b73;
+  --mr-on-navy: #f7f7fb;
+
+  /* Lines */
+  --mr-border: #e5e5e8;
+  --mr-border-strong: #d3d3d8;
+
+  /* Status */
+  --mr-success: #00a96e;
+  --mr-warning: #ff880e;
+  --mr-error: #e7000b;
+  --mr-info: #2580ff;
+
+  /* Interaction */
+  --mr-ring: rgba(37, 128, 255, 0.28);
+  --mr-red-tint: rgba(208, 2, 2, 0.06);
+
+  /* Radius */
+  --mr-radius: 12px;
+  --mr-radius-md: 10px;
+  --mr-radius-sm: 7px;
+
+  /* Elevation */
+  --mr-shadow-sm: 0 1px 2px rgba(3, 2, 19, 0.08);
+  --mr-shadow: 0 1px 2px rgba(3, 2, 19, 0.06), 0 10px 30px rgba(3, 2, 19, 0.07);
+
+  /* Type */
+  --mr-font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    Helvetica, Arial, sans-serif;
+
+  /* Layout */
+  --mr-maxw: 900px;
+  --mr-gap: 22px;
+}
