@@ -159,7 +159,8 @@ export default function App() {
     try {
       // Persist so the data survives the round-trip to Stripe.
       sessionStorage.setItem(STORAGE_KEY, JSON.stringify(form))
-      const { checkoutUrl } = await createCheckoutSession(form, window.location.origin)
+      const returnOrigin = (import.meta.env.VITE_RETURN_ORIGIN as string | undefined)?.replace(/\/+$/, '') || window.location.origin
+      const { checkoutUrl } = await createCheckoutSession(form, returnOrigin)
       window.location.href = checkoutUrl // leave the SPA for Stripe's hosted page
     } catch (e) {
       setPayMessage(
