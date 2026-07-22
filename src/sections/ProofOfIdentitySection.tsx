@@ -44,6 +44,21 @@ export default function ProofOfIdentitySection({ value, onChange, email }: Proof
   const onChangeRef = useRef(onChange)
   onChangeRef.current = onChange
 
+  // If the email changes after a session has started, reset so the new email
+  // is used for the next verification (backend matches email to session).
+  const prevEmailRef = useRef(email)
+  useEffect(() => {
+    if (prevEmailRef.current === email) return
+    prevEmailRef.current = email
+    if (value.sessionId && !isTerminal(value.status)) {
+      sessionStorage.removeItem(IDV_STORAGE_KEY)
+      onChangeRef.current(createEmptyIdentity())
+      setError(null)
+      setSlow(false)
+      setTimedOut(false)
+    }
+  }, [email, value.sessionId, value.status])
+
   // Restore an in-flight verification after a refresh (once, on mount).
   const restored = useRef(false)
   useEffect(() => {
