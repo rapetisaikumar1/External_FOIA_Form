@@ -11,8 +11,9 @@
 import type { IdentityStatus } from '../types/form'
 
 const API_BASE = (import.meta.env.VITE_API_BASE_URL || 'http://localhost:8000').replace(/\/+$/, '')
-const SESSION_ENDPOINT = `${API_BASE}/api/public/identity-verification/session/`
-const STATUS_ENDPOINT = `${API_BASE}/api/public/identity-verification/status/`
+const IDENTITY_API_BASE = (import.meta.env.VITE_IDENTITY_API_BASE_URL || API_BASE).replace(/\/+$/, '')
+const SESSION_ENDPOINT = `${IDENTITY_API_BASE}/api/public/identity-verification/session/`
+const STATUS_ENDPOINT = `${IDENTITY_API_BASE}/api/public/identity-verification/status/`
 
 export class IdentityError extends Error {
   status?: number
